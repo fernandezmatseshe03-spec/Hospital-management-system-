@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}
+CarePoint Hospital | Home
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div>
+
+        <p class="eyebrow">
+            MODERN DIGITAL HEALTHCARE
+        </p>
+
+        <h1>
+            Healthcare made simpler for patients and hospital teams.
+        </h1>
+
+        <p class="hero-text">
+            Book appointments, request medical assistance,
+            manage patient information and organize hospital
+            workflows from one platform.
+        </p>
+
+        <div class="hero-actions">
+
+            <a
+                class="btn"
+                href="{{ url_for('register') }}"
+            >
+                Create Patient Account
+            </a>
+
+            <a
+                class="btn btn-outline"
+                href="{{ url_for('login') }}"
+            >
+                Sign In
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="status-dot"></div>
+
+        <h3>
+            Patient Care Portal
+        </h3>
+
+        <p>
+            Access appointments, medical assistance
+            requests and medical records from your
+            personal dashboard.
+        </p>
+
+        <div class="mini-stat">
+
+            <strong>
+                24/7
+            </strong>
+
+            <span>
+                Digital access
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <p class="eyebrow">
+            PLATFORM FEATURES
+        </p>
+
+        <h2>
+            One system for the whole care journey.
+        </h2>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="card">
+
+            <div class="icon">
+                01
+            </div>
+
+            <h3>
+                Patient Portal
+            </h3>
+
+            <p>
+                Patients can create accounts,
+                manage their information and
+                access their healthcare dashboard.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                02
+            </div>
+
+            <h3>
+                Appointments
+            </h3>
+
+            <p>
+                Patients can request appointments
+                while authorized staff manage
+                appointment status.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                03
+            </div>
+
+            <h3>
+                Medical Assistance
+            </h3>
+
+            <p>
+                Patients can send requests to
+                hospital staff and receive responses
+                through the portal.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                04
+            </div>
+
+            <h3>
+                Medical Records
+            </h3>
+
+            <p>
+                Authorized clinical staff can
+                create medical records that patients
+                can view from their dashboard.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="cta">
+
+    <h2>
+        Ready to get started?
+    </h2>
+
+    <p>
+        Create a patient account or sign in
+        to access the hospital portal.
+    </p>
+
+    <a
+        class="btn"
+        href="{{ url_for('register') }}"
+    >
+        Get Started
+    </a>
+
+</section>
+
+{% endblock %}

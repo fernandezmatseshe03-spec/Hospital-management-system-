@@ -1,0 +1,480 @@
+{% extends "base.html" %}
+
+{% block title %}
+Patient Dashboard | CarePoint
+{% endblock %}
+
+
+{% block content %}
+
+<div class="dashboard">
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <p class="eyebrow">
+                PATIENT PORTAL
+            </p>
+
+            <h1>
+                Hello, {{ current_user }}
+            </h1>
+
+            <p class="muted">
+                Manage your healthcare requests
+                and appointments.
+            </p>
+
+        </div>
+
+
+        <a
+            class="btn"
+            href="{{ url_for('profile') }}"
+        >
+            My Profile
+        </a>
+
+    </div>
+
+
+    <div class="emergency-notice">
+
+        <strong>
+            Important:
+        </strong>
+
+        This portal is not intended for
+        life-threatening emergencies.
+        Contact the hospital or appropriate
+        emergency services directly when
+        urgent assistance is required.
+
+    </div>
+
+
+    <div class="two-column">
+
+
+        <!-- APPOINTMENT -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Book an Appointment
+                </h2>
+
+            </div>
+
+
+            <form
+                method="POST"
+                action="{{ url_for('book_appointment') }}"
+            >
+
+                <label>
+                    Date
+                </label>
+
+                <input
+                    type="date"
+                    name="appointment_date"
+                    required
+                >
+
+
+                <label>
+                    Time
+                </label>
+
+                <input
+                    type="time"
+                    name="appointment_time"
+                    required
+                >
+
+
+                <label>
+                    Department
+                </label>
+
+                <select
+                    name="department"
+                    required
+                >
+
+                    <option value="">
+                        Select department
+                    </option>
+
+                    <option>
+                        General Medicine
+                    </option>
+
+                    <option>
+                        Dental
+                    </option>
+
+                    <option>
+                        Pediatrics
+                    </option>
+
+                    <option>
+                        Cardiology
+                    </option>
+
+                    <option>
+                        Laboratory
+                    </option>
+
+                    <option>
+                        Radiology
+                    </option>
+
+                    <option>
+                        Emergency
+                    </option>
+
+                </select>
+
+
+                <label>
+                    Reason for appointment
+                </label>
+
+                <textarea
+                    name="reason"
+                    rows="4"
+                    required
+                ></textarea>
+
+
+                <button
+                    class="btn full"
+                    type="submit"
+                >
+                    Request Appointment
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- MEDICAL HELP -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Request Medical Help
+                </h2>
+
+            </div>
+
+
+            <form
+                method="POST"
+                action="{{ url_for('medical_request') }}"
+            >
+
+                <label>
+                    Subject
+                </label>
+
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder="e.g. Need to speak to a doctor"
+                    required
+                >
+
+
+                <label>
+                    Message
+                </label>
+
+                <textarea
+                    name="message"
+                    rows="8"
+                    placeholder="Describe what you need help with..."
+                    required
+                ></textarea>
+
+
+                <button
+                    class="btn full"
+                    type="submit"
+                >
+                    Send Request
+                </button>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <!-- APPOINTMENTS -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <h2>
+                My Appointments
+            </h2>
+
+        </div>
+
+
+        {% if appointments %}
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Time
+                        </th>
+
+                        <th>
+                            Department
+                        </th>
+
+                        <th>
+                            Reason
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Staff
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for a in appointments %}
+
+                    <tr>
+
+                        <td>
+                            {{ a.appointment_date }}
+                        </td>
+
+                        <td>
+                            {{ a.appointment_time }}
+                        </td>
+
+                        <td>
+                            {{ a.department }}
+                        </td>
+
+                        <td>
+                            {{ a.reason }}
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="badge {{ a.status|lower|replace(' ', '-') }}"
+                            >
+                                {{ a.status }}
+                            </span>
+
+                        </td>
+
+                        <td>
+                            {{ a.staff_name or "Not assigned" }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <p class="empty">
+            You have no appointments yet.
+        </p>
+
+        {% endif %}
+
+    </section>
+
+
+    <div class="two-column">
+
+
+        <!-- REQUESTS -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Medical Help Requests
+                </h2>
+
+            </div>
+
+
+            {% if requests %}
+
+                {% for r in requests %}
+
+                <div class="request-card">
+
+                    <div class="request-top">
+
+                        <strong>
+                            {{ r.subject }}
+                        </strong>
+
+                        <span class="badge">
+                            {{ r.status }}
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        {{ r.message }}
+                    </p>
+
+
+                    {% if r.staff_response %}
+
+                    <div class="response">
+
+                        <strong>
+                            Staff response:
+                        </strong>
+
+                        <br>
+
+                        {{ r.staff_response }}
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+            <p class="empty">
+                No medical requests yet.
+            </p>
+
+            {% endif %}
+
+        </section>
+
+
+        <!-- RECORDS -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    Medical Records
+                </h2>
+
+            </div>
+
+
+            {% if records %}
+
+                {% for r in records %}
+
+                <div class="record-card">
+
+                    <strong>
+                        {{ r.diagnosis }}
+                    </strong>
+
+                    <small>
+                        {{ r.created_at }}
+                        ·
+                        {{ r.staff_name }}
+                    </small>
+
+
+                    {% if r.treatment %}
+
+                    <p>
+                        <b>Treatment:</b>
+                        {{ r.treatment }}
+                    </p>
+
+                    {% endif %}
+
+
+                    {% if r.prescription %}
+
+                    <p>
+                        <b>Prescription:</b>
+                        {{ r.prescription }}
+                    </p>
+
+                    {% endif %}
+
+
+                    {% if r.notes %}
+
+                    <p>
+                        <b>Notes:</b>
+                        {{ r.notes }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+            <p class="empty">
+                No medical records available.
+            </p>
+
+            {% endif %}
+
+        </section>
+
+    </div>
+
+</div>
+
+{% endblock %}
