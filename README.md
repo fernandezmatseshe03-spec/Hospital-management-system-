@@ -123,7 +123,7 @@ Authentication and authorization are used to help ensure that users access the a
 
 Screenshots of the system will be added here to demonstrate the user interface and major features.
 
-Recommended screenshots include:
+ The screenshots include:
 
 * Homepage
 * Patient registration
