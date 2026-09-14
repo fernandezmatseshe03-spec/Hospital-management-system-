@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Profile | CarePoint
+{% endblock %}
+
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-card wide">
+
+        <p class="eyebrow">
+            ACCOUNT
+        </p>
+
+        <h1>
+            My Profile
+        </h1>
+
+
+        <form
+            method="POST"
+            class="form-grid"
+        >
+
+            <div>
+
+                <label>
+                    Full name
+                </label>
+
+                <input
+                    name="full_name"
+                    value="{{ user.full_name }}"
+                    required
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    value="{{ user.email }}"
+                    disabled
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Phone
+                </label>
+
+                <input
+                    name="phone"
+                    value="{{ user.phone or '' }}"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Date of birth
+                </label>
+
+                <input
+                    type="date"
+                    name="date_of_birth"
+                    value="{{ user.date_of_birth or '' }}"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Gender
+                </label>
+
+                <select name="gender">
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option
+                        value="Male"
+                        {% if user.gender == "Male" %}
+                        selected
+                        {% endif %}
+                    >
+                        Male
+                    </option>
+
+                    <option
+                        value="Female"
+                        {% if user.gender == "Female" %}
+                        selected
+                        {% endif %}
+                    >
+                        Female
+                    </option>
+
+                    <option
+                        value="Other"
+                        {% if user.gender == "Other" %}
+                        selected
+                        {% endif %}
+                    >
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Role
+                </label>
+
+                <input
+                    value="{{ user.role|capitalize }}"
+                    disabled
+                >
+
+            </div>
+
+
+            <div class="full-width">
+
+                <label>
+                    Address
+                </label>
+
+                <textarea
+                    name="address"
+                    rows="3"
+                >{{ user.address or '' }}</textarea>
+
+            </div>
+
+
+            <div class="full-width">
+
+                <label>
+                    Emergency Contact
+                </label>
+
+                <input
+                    name="emergency_contact"
+                    value="{{ user.emergency_contact or '' }}"
+                >
+
+            </div>
+
+
+            <div class="full-width">
+
+                <button
+                    class="btn full"
+                    type="submit"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
