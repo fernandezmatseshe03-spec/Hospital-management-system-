@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}
+Patient Registration | CarePoint
+{% endblock %}
+
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-card wide">
+
+        <p class="eyebrow">
+            PATIENT REGISTRATION
+        </p>
+
+        <h1>
+            Create your account
+        </h1>
+
+        <p class="muted">
+            Register to access appointments and
+            request medical assistance.
+        </p>
+
+
+        <form
+            method="POST"
+            class="form-grid"
+        >
+
+            <div>
+
+                <label>
+                    Full name *
+                </label>
+
+                <input
+                    type="text"
+                    name="full_name"
+                    required
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Phone number
+                </label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Email address *
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    required
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Date of birth
+                </label>
+
+                <input
+                    type="date"
+                    name="date_of_birth"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Gender
+                </label>
+
+                <select name="gender">
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option value="Male">
+                        Male
+                    </option>
+
+                    <option value="Female">
+                        Female
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Emergency contact
+                </label>
+
+                <input
+                    type="text"
+                    name="emergency_contact"
+                    placeholder="Name / phone"
+                >
+
+            </div>
+
+
+            <div class="full-width">
+
+                <label>
+                    Address
+                </label>
+
+                <textarea
+                    name="address"
+                    rows="3"
+                ></textarea>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Password *
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    required
+                    minlength="8"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Confirm password *
+                </label>
+
+                <input
+                    type="password"
+                    name="confirm_password"
+                    required
+                    minlength="8"
+                >
+
+            </div>
+
+
+            <div class="full-width">
+
+                <button
+                    class="btn full"
+                    type="submit"
+                >
+                    Create Patient Account
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
