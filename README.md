@@ -1,207 +1,150 @@
-<<<<<<< HEAD
-# CarePoint Hospital Management System
-
-A Flask + SQLite hospital management system prototype.
-
-## Features
-
-- Patient registration
-- Patient login
-- Staff login
-- Password hashing
-- Role-based access
-- Patient profiles
-- Appointment requests
-- Appointment management
-- Medical assistance requests
-- Staff responses
-- Medical records
-- Staff management
-- Administrator account creation
-- Responsive interface
-- SQLite database
-
-## User Roles
-
-### Patient
-
-Patients can:
-
-- Register
-- Login
-- Update their profile
-- Request appointments
-- Send medical assistance requests
-- View appointment status
-- View staff responses
-- View medical records
-
-### Doctor
-
-Doctors can:
-
-- View patients
-- View appointments
-- Manage appointments
-- Respond to medical requests
-- Create medical records
-
-### Nurse
-
-Nurses can:
-
-- View patients
-- Manage appointments
-- Respond to medical requests
-- Create medical records
-
-### Receptionist
-
-Receptionists can:
-
-- View patients
-- Manage appointments
-- Respond to medical requests
-
-### Administrator
-
-Administrators can:
-
-- Access staff dashboard
-- View patients
-- Manage appointments
-- Respond to medical requests
-- Create medical records
-- Create staff accounts
-
-## Demo Administrator
-
-Email:
-
-admin@carepoint.test
-
-Password:
-
-Admin123!
-
-Change these credentials before using the application outside local development.
-
-## Installation
-
-Install the dependencies:
-
-pip install -r requirements.txt
-
-Run the application:
-
-python app.py
-
-Then open:
-
-http://127.0.0.1:5000
-
-## Database
-
-SQLite is used for local development.
-
-The database file:
-
-hospital.db
-
-is automatically created when the application starts.
-
-## Important Security Notice
-
-This is a development and portfolio prototype.
-
-Do not use it to store real patient medical information without implementing appropriate production security measures, including:
-
-- HTTPS
-- CSRF protection
-- Secure session configuration
-- Strong secret management
-- Database access controls
-- Audit logging
-- Backups
-- Data encryption
-- Access-control policies
-- Privacy and consent workflows
-- Appropriate healthcare/legal compliance
-=======
 # 🏥 Hospital Management System
 
-A full-stack Hospital Management System designed to streamline the management of patients, appointments, medical information, and hospital staff activities through a centralized web application.
+A full-stack **Hospital Management System** built with **Python, Flask, SQLite, HTML, CSS, and JavaScript**. The system provides separate functionality for patients and hospital staff, including authentication, appointments, medical requests, medical records, and profile management.
 
-## 📌 Project Overview
+## 🌐 Live Demo
 
-The Hospital Management System provides a digital platform for managing interactions between patients and hospital staff.
+**[Open the Hospital Management System](https://hospital-management-system-1-osle.onrender.com)**
 
-Patients can create accounts, provide their details, request medical assistance, and manage appointments, while authorized hospital staff can manage patient information and appointments through dedicated dashboards.
+The application is publicly deployed on **Render**, allowing users to access and interact with the system directly through a web browser.
 
-The project was developed as a practical full-stack web development project using Python and Flask for the backend, together with HTML, CSS, and JavaScript for the frontend.
+## 📂 Source Code
 
-## ✨ Key Features
+**[View the GitHub Repository](https://github.com/fernandezmatseshe03-spec/Hospital-management-system-)**
+
+---
+
+## ✨ Features
 
 ### 👤 Patient Features
 
-* Patient registration and login
-* Patient profile management
-* Submission of personal and medical information
+* Patient account registration
+* Secure login and logout
+* Personal patient dashboard
+* Profile management
 * Appointment booking
-* Viewing appointment information
-* Access to relevant hospital services
+* Medical assistance/request submission
+* View appointment status
+* View medical records
+* Secure password hashing
 
-### 🩺 Hospital Staff Features
+### 👨‍⚕️ Hospital Staff Features
 
-* Staff authentication
-* Patient management
-* Appointment management
-* Viewing patient information
-* Managing patient requests
-* Dedicated staff dashboard
+The system supports different staff roles, including:
 
-### 👨‍💼 Administration
+* Administrator
+* Doctor
+* Nurse
+* Receptionist
 
-* Administrative dashboard
-* Overview of system activity
-* Management of users and hospital information
-* Centralized management of hospital operations
+Staff can:
+
+* View patient information
+* Manage appointments
+* Update appointment status
+* Respond to medical requests
+* Create and manage medical records
+* Access role-specific functionality
+
+### 🔐 Authentication & Security
+
+* User authentication
+* Password hashing using Werkzeug
+* Session-based authentication
+* Role-based access control
+* Protected patient and staff routes
+* Environment-based configuration for production deployment
+
+---
 
 ## 🛠️ Technologies Used
 
-* **Python**
-* **Flask**
-* **HTML5**
-* **CSS3**
-* **JavaScript**
-* **SQLite** / database integration
-* **Jinja2**
+| Technology   | Purpose                                    |
+| ------------ | ------------------------------------------ |
+| Python       | Backend programming                        |
+| Flask        | Web application framework                  |
+| SQLite       | Database                                   |
+| HTML5        | Page structure                             |
+| CSS3         | Styling and responsive interface           |
+| JavaScript   | Client-side functionality                  |
+| Jinja2       | Dynamic HTML templates                     |
+| Werkzeug     | Password hashing and security              |
+| Gunicorn     | Production WSGI server                     |
+| Render       | Cloud deployment                           |
+| Git & GitHub | Version control and source-code management |
 
-## 📂 Project Structure
+---
 
-```text
-Hospital-management-system/
-│
-├── app.py
-├── requirements.txt
-├── templates/
-│   ├── index.html
-│   ├── login.html
-│   ├── register.html
-│   ├── dashboard.html
-│   └── ...
-│
-├── static/
-│   ├── style.css
-│   ├── script.js
-│   └── ...
-│
-└── README.md
-```
+## 🗄️ Database Structure
 
-> The exact files and structure may vary as the system continues to be developed.
+The system uses SQLite with several interconnected tables:
 
-## 🚀 Getting Started
+* `users`
+* `appointments`
+* `medical_requests`
+* `medical_records`
+
+The database stores patient accounts, staff accounts, appointments, medical requests, and medical records.
+
+---
+
+## 🔑 User Roles
+
+### Patient
+
+Patients can register for an account and access their personal dashboard.
+
+### Doctor
+
+Doctors can manage appointments, respond to medical requests, and create medical records.
+
+### Nurse
+
+Nurses can access relevant patient and appointment functionality and manage medical records.
+
+### Receptionist
+
+Receptionists can manage appointments and assist with patient administration.
+
+### Administrator
+
+The administrator has elevated system-management privileges, including staff account creation and management.
+
+---
+
+## 📸 Screenshots
+
+Screenshots of the application can be found in the `screenshots` folder.
+
+### Homepage
+
+![Homepage](screenshots/homepage.png)
+
+### Patient Registration
+
+![Patient Registration](screenshots/register.png)
+
+### Login
+
+![Login](screenshots/login.png)
+
+### Patient Dashboard
+
+![Patient Dashboard](screenshots/patient-dashboard.png)
+
+### Staff Dashboard
+
+![Staff Dashboard](screenshots/staff-dashboard.png)
+
+### Appointments
+
+![Appointments](screenshots/appointments.png)
+
+> **Note:** Rename the screenshot files in the `screenshots` folder to match the filenames above, or update the paths in this section to match your actual screenshot filenames.
+
+---
+
+## 🚀 Running the Project Locally
 
 ### 1. Clone the repository
 
@@ -209,101 +152,146 @@ Hospital-management-system/
 git clone https://github.com/fernandezmatseshe03-spec/Hospital-management-system-.git
 ```
 
-### 2. Open the project directory
+### 2. Enter the project directory
 
 ```bash
 cd Hospital-management-system-
 ```
 
-If the application files are inside a subdirectory, navigate into that directory before running the application.
+### 3. Create a virtual environment
 
-### 3. Install the required dependencies
+```bash
+python -m venv venv
+```
+
+### 4. Activate the virtual environment
+
+**Windows:**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux/macOS:**
+
+```bash
+source venv/bin/activate
+```
+
+### 5. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Run the Flask application
+### 6. Run the application
 
 ```bash
 python app.py
 ```
 
-### 5. Open the application
-
-Open your browser and visit:
+The application will normally be available at:
 
 ```text
 http://127.0.0.1:5000
 ```
 
-## 🔐 Authentication
+---
 
-The system includes separate access and functionality for different types of users.
+## ☁️ Deployment
 
-Typical roles include:
+The application is deployed using **Render**.
 
-* Patient
-* Hospital Staff
-* Administrator
+Production deployment uses:
 
-Authentication and authorization are used to help ensure that users access the appropriate areas of the system.
+```text
+Build Command:
+pip install -r requirements.txt
+```
 
-## 📸 Screenshots
+```text
+Start Command:
+gunicorn app:app
+```
 
-Screenshots of the system will be added here to demonstrate the user interface and major features.
+Production configuration uses environment variables for sensitive settings such as the Flask secret key and administrator credentials.
 
- The screenshots include:
+---
 
-* Homepage
-* Patient registration
-* Patient login
-* Patient dashboard
-* Appointment booking
-* Staff dashboard
-* Admin dashboard
+## 📁 Project Structure
 
-## 🎯 Project Goals
+```text
+Hospital-management-system/
+│
+├── static/
+│   ├── script.js
+│   └── style.css
+│
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── patient_dashboard.html
+│   ├── staff_dashboard.html
+│   └── profile.html
+│
+├── app.py
+├── hospital.db
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
 
-The main goals of this project are to:
+---
 
-* Digitize common hospital management processes
-* Improve patient and appointment management
-* Provide centralized access to hospital information
-* Reduce reliance on manual record management
-* Demonstrate practical full-stack development skills
-* Build a scalable foundation for additional healthcare features
+## 🎯 Project Objective
 
-## 🔮 Future Improvements
+The goal of this project was to develop a web-based hospital management system that demonstrates how different hospital users can interact with a centralized system.
 
-Planned improvements may include:
+The project focuses on:
 
-* Online appointment notifications
-* Doctor and department management
-* Electronic medical records
-* Prescription management
-* Billing and payment integration
-* Email/SMS notifications
-* Advanced reporting and analytics
-* Role-based access control improvements
-* Cloud deployment
-* Improved security and data protection
+* User authentication
+* Role-based access control
+* Patient management
+* Appointment management
+* Medical request handling
+* Medical record management
+* Database integration
+* Production deployment
 
-## ⚠️ Disclaimer
+---
 
-This project is intended for **educational, demonstration, and portfolio purposes**.
+## 💡 What I Learned
 
-It should not be used to manage real patient information without appropriate security, privacy, authentication, authorization, regulatory compliance, data protection, and professional healthcare-system requirements.
+Through this project, I gained practical experience with:
+
+* Building full-stack applications with Flask
+* Designing relational database structures
+* Implementing authentication and authorization
+* Working with SQLite
+* Creating dynamic interfaces with Jinja2
+* Managing application sessions
+* Deploying Python applications to the cloud
+* Using Git and GitHub for version control
+* Debugging production deployment issues
+* Adapting applications for Linux-based hosting environments
+
+---
 
 ## 👨‍💻 Developer
 
 **Fernandez Matseshe**
 
-Computer Science Graduate | Web Developer
+BSc Computer Science
 
-Interested in building web applications, digital solutions, and SEO-focused websites.
+### Portfolio Links
+
+* **Live Application:** https://hospital-management-system-1-osle.onrender.com
+* **GitHub:** https://github.com/fernandezmatseshe03-spec
 
 ---
 
-⭐ If you find this project useful or interesting, feel free to explore the source code and follow the project's development.
->>>>>>> 573bdfbaf0505b0bf6f69d64f0d4c871d60f12d6
+## 📄 License
+
+This project was developed for educational, portfolio, and demonstration purposes.
